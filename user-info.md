@@ -1,3 +1,5 @@
+#cf user-info
+
 ```cf user-info``` command will list the roles of Orgs and Spaces the user has targeted. There should be a command which can list the roles of Orgs and Spaces which the user has targeted and the command should be fast unlike ```cf orgs-users``` and ```cf space-users```   
 
 
