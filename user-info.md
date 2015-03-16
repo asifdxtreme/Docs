@@ -3,11 +3,13 @@
 1. User should be logged in.  
 2. User should target Org and Space(If the user has targeted only Org then user will be able to see the roles associated to only Org)  
 
-***Output :***
-```$ cf user-info
+***Output :***  
+```
+$ cf user-info
 Getting user information......
 User    Org       Space       Role
-asif   asifOrg   asifSpace   ORG MANAGER, SPACE MANAGER, SPACE DEVELOPER```
+asif   asifOrg   asifSpace   ORG MANAGER, SPACE MANAGER, SPACE DEVELOPER
+```
 
 ***Processing of the request :*** 
 
