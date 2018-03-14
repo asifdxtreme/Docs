@@ -109,7 +109,13 @@ mvn deploy -DskipTests -Prelease -Pdistribution -Ppassphrase --settings .travis.
 
 Step 6: Once deployed successfully then go to nexus repo to close the staging repo https://repository.apache.org 
 
-Step 7: Download the java-chassis-distribution from staging repo and upload it to Apache SVN. 
+Step 7: Download the java-chassis-distribution from staging repo, sign the artifacts and upload it to Apache SVN. 
+```
+gpg2 -ab  apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-release.zip
+gpg2 -ab apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip
+gpg2 --print-md SHA512 apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-release.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-release.zip.sha512
+gpg2 --print-md SHA512 apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip.sha512
+```
 
 ### Saga
 
@@ -169,4 +175,11 @@ mvn deploy -DskipTests --settings .travis.settings.xml -Prelease -Ppassphrase
 
 Step 6: Once deployed successfully then go to nexus repo to close the staging repo https://repository.apache.org 
 
-Step 7: Download the saga-distribution from staging repo and upload it to Apache SVN. 
+Step 7: Download the saga-distribution from staging repo, sign the atrifacts and upload it to Apache SVN. 
+```
+gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip
+gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip
+
+gpg2 --print-md SHA512 apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip.sha512
+gpg2 --print-md SHA512 apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip.sha512
+```
