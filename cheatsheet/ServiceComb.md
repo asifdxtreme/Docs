@@ -177,9 +177,9 @@ Step 6: Once deployed successfully then go to nexus repo to close the staging re
 
 Step 7: Download the saga-distribution from staging repo, sign the atrifacts and upload it to Apache SVN. 
 ```
-gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip
+gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-bin.zip
 gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip
 
-sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip.sha512
+sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-bin.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip.sha512
 sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip.sha512
 ```
