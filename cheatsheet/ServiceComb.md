@@ -113,8 +113,8 @@ Step 7: Download the java-chassis-distribution from staging repo, sign the artif
 ```
 gpg2 -ab  apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-release.zip
 gpg2 -ab apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip
-gpg2 --print-md SHA512 apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-release.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-release.zip.sha512
-gpg2 --print-md SHA512 apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip.sha512
+sha512sum apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-release.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-release.zip.sha512
+sha512sum apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip.sha512
 ```
 
 ### Saga
@@ -180,6 +180,6 @@ Step 7: Download the saga-distribution from staging repo, sign the atrifacts and
 gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip
 gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip
 
-gpg2 --print-md SHA512 apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip.sha512
-gpg2 --print-md SHA512 apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip.sha512
+sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip.sha512
+sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip.sha512
 ```
