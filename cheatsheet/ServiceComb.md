@@ -180,6 +180,6 @@ Step 7: Download the saga-distribution from staging repo, sign the atrifacts and
 gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-bin.zip
 gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip
 
-sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-bin.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-release.zip.sha512
+sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-bin.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-bin.zip.sha512
 sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip.sha512
 ```
