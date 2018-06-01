@@ -21,33 +21,33 @@ gvt restore
 Step 3: Make the release
 
 ```
-bash -x scripts/release/make_release.sh linux 1.0.0 1.0.0-m1
-bash -x scripts/release/make_release.sh windows 1.0.0 1.0.0-m1
+bash -x scripts/release/make_release.sh linux 1.0.0 1.0.0-m2
+bash -x scripts/release/make_release.sh windows 1.0.0 1.0.0-m2
 ```
 
 Step 4: Make a Tag
 ```
-git tag -a 1.0.0-m1 -m "Service-Center 1.0.0-m1 Release"
+git tag -a 1.0.0-m2 -m "Service-Center 1.0.0-m2 Release"
 ```
 
 Step 5: Push the Tag
 ```
-git push origin 1.0.0-m1
+git push origin 1.0.0-m2
 ```
 
 Step 6: Test all the release
 
-Step 7: Download the source code from git tag and rename it to apache-servicecomb-incubating-service-center-1.0.0-m1-src.zip  
+Step 7: Download the source code from git tag and rename it to apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip  
   
 Step 8: Sign the release  
 ```
-gpg2 -ab apache-incubator-servicecomb-service-center-1.0.0-m1-linux-amd64.tar.gz
-gpg2 -ab apache-incubator-servicecomb-service-center-1.0.0-m1-windows-amd64.tar.gz
-gpg2 -ab apache-servicecomb-incubating-service-center-1.0.0-m1-src.zip
+gpg2 -ab apache-incubator-servicecomb-service-center-1.0.0-m2-linux-amd64.tar.gz
+gpg2 -ab apache-incubator-servicecomb-service-center-1.0.0-m2-windows-amd64.tar.gz
+gpg2 -ab apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip
 
-gpg2 --print-md SHA512 apache-servicecomb-incubating-service-center-1.0.0-m1-linux-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-m1-linux-amd64.tar.gz.sha512
-gpg2 --print-md SHA512 apache-servicecomb-incubating-service-center-1.0.0-m1-windows-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-m1-windows-amd64.tar.gz.sha512
-gpg2 --print-md SHA512 apache-servicecomb-incubating-service-center-1.0.0-m1-src.zip > apache-servicecomb-incubating-service-center-1.0.0-m1-src.zip.sha512
+gpg2 --print-md SHA512 apache-servicecomb-incubating-service-center-1.0.0-m2-linux-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-m2-linux-amd64.tar.gz.sha512
+gpg2 --print-md SHA512 apache-servicecomb-incubating-service-center-1.0.0-m2-windows-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-m2-windows-amd64.tar.gz.sha512
+gpg2 --print-md SHA512 apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip > apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip.sha512
 ```
 Step 9: Push it to Apache SVN.
 
@@ -62,15 +62,15 @@ cd incubator-servicecomb-java-chassis
 Step 2: Cut the release
 
 ```
-perl -pi -e 's/1.0.0-m1-SNAPSHOT/1.0.0-m1/g' $(find . | grep *.xml)
+perl -pi -e 's/1.0.0-m2-SNAPSHOT/1.0.0-m2/g' $(find . | grep *.xml)
 ```
 
 Step 3: Create a tag and push the tag to origin
 
 ```
-git tag -a 1.0.0-m1 -m "Java-Chassis 1.0.0-m1 Release"
+git tag -a 1.0.0-m2 -m "Java-Chassis 1.0.0-m2 Release"
 
-git push origin 1.0.0-m1
+git push origin 1.0.0-m2
 ```
 
 Step 4: Configure the .travis.settings.xml file to change the values of apache username/password , keypath and passphrase.
@@ -111,10 +111,10 @@ Step 6: Once deployed successfully then go to nexus repo to close the staging re
 
 Step 7: Download the java-chassis-distribution from staging repo, sign the artifacts and upload it to Apache SVN. 
 ```
-gpg2 -ab  apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-release.zip
-gpg2 -ab apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip
-sha512sum apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-bin.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-bin.zip.sha512
-sha512sum apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m1-src.zip.sha512
+gpg2 -ab  apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m2-release.zip
+gpg2 -ab apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m2-src.zip
+sha512sum apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m2-bin.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m2-bin.zip.sha512
+sha512sum apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m2-src.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-m2-src.zip.sha512
 ```
 
 ### Saga
@@ -128,15 +128,15 @@ cd incubator-servicecomb-saga
 Step 2: Cut the release
 
 ```
-perl -pi -e 's/0.1.0-SNAPSHOT/0.1.0/g' $(find . | grep *.xml)
+perl -pi -e 's/0.2.0-SNAPSHOT/0.2.0/g' $(find . | grep *.xml)
 ```
 
 Step 3: Create a tag and push the tag to origin
 
 ```
-git tag -a 0.1.0 -m "Saga 0.1.0 Release"
+git tag -a 0.2.0 -m "Saga 0.2.0 Release"
 
-git push origin 0.1.0
+git push origin 0.2.0
 ```
 
 Step 4: Configure the .travis.settings.xml file to change the values of apache username/password , keypath and passphrase.
@@ -177,9 +177,9 @@ Step 6: Once deployed successfully then go to nexus repo to close the staging re
 
 Step 7: Download the saga-distribution from staging repo, sign the atrifacts and upload it to Apache SVN. 
 ```
-gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-bin.zip
-gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip
+gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.2.0-bin.zip
+gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.2.0-src.zip
 
-sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-bin.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-bin.zip.sha512
-sha512sum apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip > apache-servicecomb-incubating-saga-distribution-0.1.0-src.zip.sha512
+sha512sum apache-servicecomb-incubating-saga-distribution-0.2.0-bin.zip > apache-servicecomb-incubating-saga-distribution-0.2.0-bin.zip.sha512
+sha512sum apache-servicecomb-incubating-saga-distribution-0.2.0-src.zip > apache-servicecomb-incubating-saga-distribution-0.2.0-src.zip.sha512
 ```
