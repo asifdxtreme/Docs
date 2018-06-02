@@ -45,9 +45,9 @@ gpg2 -ab apache-incubator-servicecomb-service-center-1.0.0-m2-linux-amd64.tar.gz
 gpg2 -ab apache-incubator-servicecomb-service-center-1.0.0-m2-windows-amd64.tar.gz
 gpg2 -ab apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip
 
-gpg2 --print-md SHA512 apache-servicecomb-incubating-service-center-1.0.0-m2-linux-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-m2-linux-amd64.tar.gz.sha512
-gpg2 --print-md SHA512 apache-servicecomb-incubating-service-center-1.0.0-m2-windows-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-m2-windows-amd64.tar.gz.sha512
-gpg2 --print-md SHA512 apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip > apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip.sha512
+sha512sum apache-servicecomb-incubating-service-center-1.0.0-m2-linux-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-m2-linux-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-incubating-service-center-1.0.0-m2-windows-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-m2-windows-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip > apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip.sha512
 ```
 Step 9: Push it to Apache SVN.
 
