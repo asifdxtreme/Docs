@@ -41,8 +41,11 @@ Step 7: Download the source code from git tag and rename it to apache-servicecom
   
 Step 8: Sign the release  
 ```
-gpg2 -ab apache-incubator-servicecomb-service-center-1.0.0-m2-linux-amd64.tar.gz
-gpg2 -ab apache-incubator-servicecomb-service-center-1.0.0-m2-windows-amd64.tar.gz
+mv incubator-servicecomb-service-center-1.0.0-m2/ apache-servicecomb-incubating-service-center-1.0.0-m2-src/
+zip -r apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip apache-servicecomb-incubating-service-center-1.0.0-m2-src
+
+gpg2 -ab apache-servicecomb-incubating-service-center-1.0.0-m2-linux-amd64.tar.gz
+gpg2 -ab apache-servicecomb-incubating-service-center-1.0.0-m2-windows-amd64.tar.gz
 gpg2 -ab apache-servicecomb-incubating-service-center-1.0.0-m2-src.zip
 
 sha512sum apache-servicecomb-incubating-service-center-1.0.0-m2-linux-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-m2-linux-amd64.tar.gz.sha512
