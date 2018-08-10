@@ -1,7 +1,7 @@
 ## Service-Center Progress from Incubation to 1.0.0 Release
 
   - In total 3 releases has been done till date after incubation of Service-Center in Apache.
-  - With every release there has been a significant addition of features and improvements.
+  - With every release there has been a significant addition of features and improvements.(like PACT Broker, Async Rest Template, Log Rotation, ipv6 support, Backend Store extension, Schema Testing, Self Discovery from Consumer )
   - With each release the stability of the Service-Center increased as more and more bugs were fixed.
   - Performance has increased significantly as lot of API's were optimized related to Service Discovery.
   - Optimizations were done for Restful Clients and Plugin loaders.
