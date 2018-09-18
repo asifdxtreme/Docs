@@ -39,5 +39,5 @@ Saga Web will mainly consist of 2 Pages as per the below hierarchy (This is a Co
 #### Transactions List
 ![Transaction](/Transactions.png)
 
-NOTE: Currently I have not considered the Sign ON process, this can be done in later phase if the there is some Single SignON process supported by ServiceComb.
+NOTE: Currently I have not considered the Sign ON process, this can be done in later phase if the there is some Single SignON mechanism supported by ServiceComb.
 
