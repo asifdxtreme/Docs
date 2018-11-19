@@ -7,8 +7,8 @@
 Step 1: Clone the code
 
 ```
-git clone https://github.com/apache/incubator-servicecomb-service-center.git $GOPATH/src/github.com/apache/incubator-servicecomb-service-center
-cd $GOPATH/src/github.com/apache/incubator-servicecomb-service-center
+git clone https://github.com/apache/servicecomb-service-center.git $GOPATH/src/github.com/apache/servicecomb-service-center
+cd $GOPATH/src/github.com/apache/servicecomb-service-center
 ```
 
 Step 2: Download all the dependencies
@@ -37,20 +37,20 @@ git push origin 1.0.0
 
 Step 6: Test all the release
 
-Step 7: Download the source code from git tag and rename it to apache-servicecomb-incubating-service-center-1.0.0-src.zip  
+Step 7: Download the source code from git tag and rename it to apache-servicecomb-service-center-1.0.0-src.zip  
   
 Step 8: Sign the release  
 ```
-mv incubator-servicecomb-service-center-1.0.0/ apache-servicecomb-incubating-service-center-1.0.0-src/
-zip -r apache-servicecomb-incubating-service-center-1.0.0-src.zip apache-servicecomb-incubating-service-center-1.0.0-src
+mv servicecomb-service-center-1.0.0/ apache-servicecomb-service-center-1.0.0-src/
+zip -r apache-servicecomb-service-center-1.0.0-src.zip apache-servicecomb-service-center-1.0.0-src
 
-gpg2 -ab apache-servicecomb-incubating-service-center-1.0.0-linux-amd64.tar.gz
-gpg2 -ab apache-servicecomb-incubating-service-center-1.0.0-windows-amd64.tar.gz
-gpg2 -ab apache-servicecomb-incubating-service-center-1.0.0-src.zip
+gpg2 -ab apache-servicecomb-service-center-1.0.0-linux-amd64.tar.gz
+gpg2 -ab apache-servicecomb-service-center-1.0.0-windows-amd64.tar.gz
+gpg2 -ab apache-servicecomb-service-center-1.0.0-src.zip
 
-sha512sum apache-servicecomb-incubating-service-center-1.0.0-linux-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-linux-amd64.tar.gz.sha512
-sha512sum apache-servicecomb-incubating-service-center-1.0.0-windows-amd64.tar.gz > apache-servicecomb-incubating-service-center-1.0.0-windows-amd64.tar.gz.sha512
-sha512sum apache-servicecomb-incubating-service-center-1.0.0-src.zip > apache-servicecomb-incubating-service-center-1.0.0-src.zip.sha512
+sha512sum apache-servicecomb-service-center-1.0.0-linux-amd64.tar.gz > apache-servicecomb-service-center-1.0.0-linux-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-service-center-1.0.0-windows-amd64.tar.gz > apache-servicecomb-service-center-1.0.0-windows-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-service-center-1.0.0-src.zip > apache-servicecomb-service-center-1.0.0-src.zip.sha512
 ```
 Step 9: Push it to Apache SVN.
 
@@ -58,8 +58,8 @@ Step 9: Push it to Apache SVN.
 
 Step 1: Clone the code
 ```
-git clone https://github.com/apache/incubator-servicecomb-java-chassis
-cd incubator-servicecomb-java-chassis
+git clone https://github.com/apache/servicecomb-java-chassis
+cd servicecomb-java-chassis
 ```
 
 Step 2: Cut the release
@@ -96,7 +96,7 @@ Step 4: Configure the .travis.settings.xml file to change the values of apache u
         <profile>
           <id>passphrase</id> <!-- give it the name of your project -->
           <properties>
-            <gpg.homedir>/home/travis/build/apache/incubator-servicecomb-java-chassis</gpg.homedir>
+            <gpg.homedir>/home/travis/build/apache/servicecomb-java-chassis</gpg.homedir>
             <gpg.keyname>2DE9D2F9</gpg.keyname>
             <gpg.passphrase>*******************************************</gpg.passphrase>
           </properties>
@@ -114,18 +114,18 @@ Step 6: Once deployed successfully then go to nexus repo to close the staging re
 
 Step 7: Download the java-chassis-distribution from staging repo, sign the artifacts and upload it to Apache SVN. 
 ```
-gpg2 -ab  apache-servicecomb-incubating-java-chassis-distribution-1.0.0-release.zip
-gpg2 -ab apache-servicecomb-incubating-java-chassis-distribution-1.0.0-src.zip
-sha512sum apache-servicecomb-incubating-java-chassis-distribution-1.0.0-bin.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-bin.zip.sha512
-sha512sum apache-servicecomb-incubating-java-chassis-distribution-1.0.0-src.zip > apache-servicecomb-incubating-java-chassis-distribution-1.0.0-src.zip.sha512
+gpg2 -ab  apache-servicecomb-java-chassis-distribution-1.0.0-release.zip
+gpg2 -ab apache-servicecomb-java-chassis-distribution-1.0.0-src.zip
+sha512sum apache-servicecomb-java-chassis-distribution-1.0.0-bin.zip > apache-servicecomb-java-chassis-distribution-1.0.0-bin.zip.sha512
+sha512sum apache-servicecomb-java-chassis-distribution-1.0.0-src.zip > apache-servicecomb-java-chassis-distribution-1.0.0-src.zip.sha512
 ```
 
 ### Saga
 
 Step 1: Clone the code
 ```
-git clone https://github.com/apache/incubator-servicecomb-saga
-cd incubator-servicecomb-saga
+git clone https://github.com/apache/servicecomb-saga
+cd servicecomb-saga
 ```
 
 Step 2: Cut the release
@@ -162,7 +162,7 @@ Step 4: Configure the .travis.settings.xml file to change the values of apache u
         <profile>
           <id>passphrase</id> <!-- give it the name of your project -->
           <properties>
-            <gpg.homedir>/home/travis/build/apache/incubator-servicecomb-java-chassis</gpg.homedir>
+            <gpg.homedir>/home/travis/build/apache/servicecomb-java-chassis</gpg.homedir>
             <gpg.keyname>2DE9D2F9</gpg.keyname>
             <gpg.passphrase>*******************************************</gpg.passphrase>
           </properties>
@@ -180,9 +180,10 @@ Step 6: Once deployed successfully then go to nexus repo to close the staging re
 
 Step 7: Download the saga-distribution from staging repo, sign the atrifacts and upload it to Apache SVN. 
 ```
-gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.2.0-bin.zip
-gpg2 -ab apache-servicecomb-incubating-saga-distribution-0.2.0-src.zip
+gpg2 -ab apache-servicecomb-saga-distribution-0.2.0-bin.zip
+gpg2 -ab apache-servicecomb-saga-distribution-0.2.0-src.zip
 
-sha512sum apache-servicecomb-incubating-saga-distribution-0.2.0-bin.zip > apache-servicecomb-incubating-saga-distribution-0.2.0-bin.zip.sha512
-sha512sum apache-servicecomb-incubating-saga-distribution-0.2.0-src.zip > apache-servicecomb-incubating-saga-distribution-0.2.0-src.zip.sha512
+sha512sum apache-servicecomb-saga-distribution-0.2.0-bin.zip > apache-servicecomb-saga-distribution-0.2.0-bin.zip.sha512
+sha512sum apache-servicecomb-saga-distribution-0.2.0-src.zip > apache-servicecomb-saga-distribution-0.2.0-src.zip.sha512
 ```
+
