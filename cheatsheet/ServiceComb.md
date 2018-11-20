@@ -44,13 +44,15 @@ Step 8: Sign the release
 mv servicecomb-service-center-1.1.0/ apache-servicecomb-service-center-1.1.0-src/
 zip -r apache-servicecomb-service-center-1.1.0-src.zip apache-servicecomb-service-center-1.1.0-src
 
-gpg2 -ab apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz
-gpg2 -ab apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz
-gpg2 -ab apache-servicecomb-service-center-1.1.0-src.zip
+gpg2 -ab apache-servicecomb-service-center-1.1.0-src.tar.gz 
+gpg2 -ab apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz 
+gpg2 -ab apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz 
+gpg2 -ab apache-servicecomb-service-center-1.1.0-darwin-amd64.tar.gz 
 
 sha512sum apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz > apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz.sha512
 sha512sum apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz > apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz.sha512
-sha512sum apache-servicecomb-service-center-1.1.0-src.zip > apache-servicecomb-service-center-1.1.0-src.zip.sha512
+sha512sum apache-servicecomb-service-center-1.1.0-darwin-amd64.tar.gz > apache-servicecomb-service-center-1.1.0-darwin-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-service-center-1.1.0-src.tar.gz > apache-servicecomb-service-center-1.1.0-src.tar.gz.sha512
 ```
 Step 9: Push it to Apache SVN.
 
