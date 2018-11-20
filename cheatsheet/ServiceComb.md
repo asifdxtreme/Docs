@@ -41,16 +41,16 @@ Step 7: Download the source code from git tag and rename it to apache-servicecom
   
 Step 8: Sign the release  
 ```
-mv servicecomb-service-center-1.0.0/ apache-servicecomb-service-center-1.0.0-src/
-zip -r apache-servicecomb-service-center-1.0.0-src.zip apache-servicecomb-service-center-1.0.0-src
+mv servicecomb-service-center-1.1.0/ apache-servicecomb-service-center-1.1.0-src/
+zip -r apache-servicecomb-service-center-1.1.0-src.zip apache-servicecomb-service-center-1.1.0-src
 
-gpg2 -ab apache-servicecomb-service-center-1.0.0-linux-amd64.tar.gz
-gpg2 -ab apache-servicecomb-service-center-1.0.0-windows-amd64.tar.gz
-gpg2 -ab apache-servicecomb-service-center-1.0.0-src.zip
+gpg2 -ab apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz
+gpg2 -ab apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz
+gpg2 -ab apache-servicecomb-service-center-1.1.0-src.zip
 
-sha512sum apache-servicecomb-service-center-1.0.0-linux-amd64.tar.gz > apache-servicecomb-service-center-1.0.0-linux-amd64.tar.gz.sha512
-sha512sum apache-servicecomb-service-center-1.0.0-windows-amd64.tar.gz > apache-servicecomb-service-center-1.0.0-windows-amd64.tar.gz.sha512
-sha512sum apache-servicecomb-service-center-1.0.0-src.zip > apache-servicecomb-service-center-1.0.0-src.zip.sha512
+sha512sum apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz > apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz > apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-service-center-1.1.0-src.zip > apache-servicecomb-service-center-1.1.0-src.zip.sha512
 ```
 Step 9: Push it to Apache SVN.
 
@@ -65,15 +65,15 @@ cd servicecomb-java-chassis
 Step 2: Cut the release
 
 ```
-perl -pi -e 's/1.0.0-SNAPSHOT/1.0.0/g' $(find . | grep *.xml)
+perl -pi -e 's/1.1.0-SNAPSHOT/1.1.0/g' $(find . | grep *.xml)
 ```
 
 Step 3: Create a tag and push the tag to origin
 
 ```
-git tag -a 1.0.0 -m "Java-Chassis 1.0.0 Release"
+git tag -a 1.1.0 -m "Java-Chassis 1.1.0 Release"
 
-git push origin 1.0.0
+git push origin 1.1.0
 ```
 
 Step 4: Configure the .travis.settings.xml file to change the values of apache username/password , keypath and passphrase.
