@@ -21,18 +21,19 @@ gvt restore
 Step 3: Make the release
 
 ```
-bash -x scripts/release/make_release.sh linux 1.0.0 1.0.0
-bash -x scripts/release/make_release.sh windows 1.0.0 1.0.0
+bash -x scripts/release/make_release.sh linux 1.1.0 1.1.0
+bash -x scripts/release/make_release.sh windows 1.1.0 1.1.0
+bash -x scripts/release/make_release.sh mac 1.1.0 1.1.0
 ```
 
 Step 4: Make a Tag
 ```
-git tag -a 1.0.0 -m "Service-Center 1.0.0 Release"
+git tag -a 1.1.0 -m "Service-Center 1.1.0 Release"
 ```
 
 Step 5: Push the Tag
 ```
-git push origin 1.0.0
+git push origin 1.1.0
 ```
 
 Step 6: Test all the release
