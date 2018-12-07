@@ -68,15 +68,15 @@ cd servicecomb-java-chassis
 Step 2: Cut the release
 
 ```
-perl -pi -e 's/1.1.0-SNAPSHOT/1.1.0/g' $(find . | grep *.xml)
+perl -pi -e 's/1.2.0-SNAPSHOT/1.2.0/g' $(find . | grep *.xml)
 ```
 
 Step 3: Create a tag and push the tag to origin
 
 ```
-git tag -a 1.1.0 -m "Java-Chassis 1.1.0 Release"
+git tag -a 1.2.0 -m "Java-Chassis 1.2.0 Release"
 
-git push origin 1.1.0
+git push origin 1.2.0
 ```
 
 Step 4: Configure the .travis.settings.xml file to change the values of apache username/password , keypath and passphrase.
@@ -117,10 +117,10 @@ Step 6: Once deployed successfully then go to nexus repo to close the staging re
 
 Step 7: Download the java-chassis-distribution from staging repo, sign the artifacts and upload it to Apache SVN. 
 ```
-gpg2 -ab  apache-servicecomb-java-chassis-distribution-1.0.0-release.zip
-gpg2 -ab apache-servicecomb-java-chassis-distribution-1.0.0-src.zip
-sha512sum apache-servicecomb-java-chassis-distribution-1.0.0-bin.zip > apache-servicecomb-java-chassis-distribution-1.0.0-bin.zip.sha512
-sha512sum apache-servicecomb-java-chassis-distribution-1.0.0-src.zip > apache-servicecomb-java-chassis-distribution-1.0.0-src.zip.sha512
+gpg2 -ab  apache-servicecomb-java-chassis-distribution-1.2.0-release.zip
+gpg2 -ab apache-servicecomb-java-chassis-distribution-1.2.0-src.zip
+sha512sum apache-servicecomb-java-chassis-distribution-1.2.0-bin.zip > apache-servicecomb-java-chassis-distribution-1.2.0-bin.zip.sha512
+sha512sum apache-servicecomb-java-chassis-distribution-1.2.0-src.zip > apache-servicecomb-java-chassis-distribution-1.2.0-src.zip.sha512
 ```
 
 ### Saga
