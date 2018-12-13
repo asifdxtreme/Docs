@@ -21,39 +21,39 @@ gvt restore
 Step 3: Make the release
 
 ```
-bash -x scripts/release/make_release.sh linux 1.1.0 1.1.0
-bash -x scripts/release/make_release.sh windows 1.1.0 1.1.0
-bash -x scripts/release/make_release.sh mac 1.1.0 1.1.0
+bash -x scripts/release/make_release.sh linux 1.2.0 1.2.0
+bash -x scripts/release/make_release.sh windows 1.2.0 1.2.0
+bash -x scripts/release/make_release.sh mac 1.2.0 1.2.0
 ```
 
 Step 4: Make a Tag
 ```
-git tag -a 1.1.0 -m "Service-Center 1.1.0 Release"
+git tag -a 1.2.0 -m "Service-Center 1.2.0 Release"
 ```
 
 Step 5: Push the Tag
 ```
-git push origin 1.1.0
+git push origin 1.2.0
 ```
 
 Step 6: Test all the release
 
-Step 7: Download the source code from git tag and rename it to apache-servicecomb-service-center-1.0.0-src.zip  
+Step 7: Download the source code from git tag and rename it to apache-servicecomb-service-center-1.2.0-src.zip  
   
 Step 8: Sign the release  
 ```
-mv servicecomb-service-center-1.1.0/ apache-servicecomb-service-center-1.1.0-src/
-zip -r apache-servicecomb-service-center-1.1.0-src.zip apache-servicecomb-service-center-1.1.0-src
+mv servicecomb-service-center-1.2.0/ apache-servicecomb-service-center-1.2.0-src/
+zip -r apache-servicecomb-service-center-1.2.0-src.zip apache-servicecomb-service-center-1.2.0-src
 
-gpg2 -ab apache-servicecomb-service-center-1.1.0-src.tar.gz 
-gpg2 -ab apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz 
-gpg2 -ab apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz 
-gpg2 -ab apache-servicecomb-service-center-1.1.0-darwin-amd64.tar.gz 
+gpg2 -ab apache-servicecomb-service-center-1.2.0-src.tar.gz 
+gpg2 -ab apache-servicecomb-service-center-1.2.0-linux-amd64.tar.gz 
+gpg2 -ab apache-servicecomb-service-center-1.2.0-windows-amd64.tar.gz 
+gpg2 -ab apache-servicecomb-service-center-1.2.0-darwin-amd64.tar.gz 
 
-sha512sum apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz > apache-servicecomb-service-center-1.1.0-linux-amd64.tar.gz.sha512
-sha512sum apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz > apache-servicecomb-service-center-1.1.0-windows-amd64.tar.gz.sha512
-sha512sum apache-servicecomb-service-center-1.1.0-darwin-amd64.tar.gz > apache-servicecomb-service-center-1.1.0-darwin-amd64.tar.gz.sha512
-sha512sum apache-servicecomb-service-center-1.1.0-src.tar.gz > apache-servicecomb-service-center-1.1.0-src.tar.gz.sha512
+sha512sum apache-servicecomb-service-center-1.2.0-linux-amd64.tar.gz > apache-servicecomb-service-center-1.2.0-linux-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-service-center-1.2.0-windows-amd64.tar.gz > apache-servicecomb-service-center-1.2.0-windows-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-service-center-1.2.0-darwin-amd64.tar.gz > apache-servicecomb-service-center-1.2.0-darwin-amd64.tar.gz.sha512
+sha512sum apache-servicecomb-service-center-1.2.0-src.tar.gz > apache-servicecomb-service-center-1.2.0-src.tar.gz.sha512
 ```
 Step 9: Push it to Apache SVN.
 
