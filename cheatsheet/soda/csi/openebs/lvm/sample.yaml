@@ -1,0 +1,60 @@
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: openebs-lvmsc-soda
+allowVolumeExpansion: true
+parameters:
+  volgroup: "lvmvg"
+  profile: a82980d3-1030-41e5-95f0-b2db5a0c065d
+provisioner: soda-csi
+allowedTopologies:
+- matchLabelExpressions:
+  - key: kubernetes.io/hostname
+    values:
+      - node-12340
+
+---
+
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: csi-lvmpvc-soda
+spec:
+  storageClassName: openebs-lvmsc-soda
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fio
+  labels:
+    name: fio
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: fio
+  template:
+    metadata:
+      labels:
+        name: fio
+    spec:
+      containers:
+        - resources:
+          name: perfrunner
+          image: openebs/tests-fio
+          imagePullPolicy: IfNotPresent
+          command: ["/bin/bash"]
+          args: ["-c", "while true ;do sleep 50; done"]
+          volumeMounts:
+            - mountPath: /datadir
+              name: fio-vol
+      volumes:
+        - name: fio-vol
+          persistentVolumeClaim:
+            claimName: csi-lvmpvc-soda
