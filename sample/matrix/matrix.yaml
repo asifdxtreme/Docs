@@ -1,0 +1,25 @@
+{
+    "CSI" : {
+            "v2.2.1" : {
+                    "vSphere" : { "min" : "vSphere 6.7u3", "max": "vSphere 7.0u2"},
+                    "k8s" : {"min": "1.18", "max": "1.21"},
+                    "isCPIRequired" : false,
+                    "deploymentPath": [
+                    "https://raw.githubusercontent.com/kubernetes-sigs/vsphere-csi-driver/v2.2.1/manifests/v2.2.1/rbac/vsphere-csi-controller-rbac.yaml",
+                    "https://raw.githubusercontent.com/kubernetes-sigs/vsphere-csi-driver/v2.2.1/manifests/v2.2.1/rbac/vsphere-csi-node-rbac.yaml",
+                    "https://raw.githubusercontent.com/kubernetes-sigs/vsphere-csi-driver/v2.2.1/manifests/v2.2.1/deploy/vsphere-csi-controller-deployment.yaml",
+                    "https://raw.githubusercontent.com/kubernetes-sigs/vsphere-csi-driver/v2.2.1/manifests/v2.2.1/deploy/vsphere-csi-node-ds.yaml"]
+                    }
+        },
+    "CPI" : {
+            "v1.20.0" : {
+                    "vSphere" : { "min" : "vSphere 6.7u3", "max": "vSphere 7.0u2"},
+                    "k8s" : {"skewVersion": "1.21"},
+                    "deploymentPath": [
+                    "https://raw.githubusercontent.com/kubernetes/cloud-provider-vsphere/v1.20.0/manifests/controller-manager/cloud-controller-manager-roles.yaml",
+                    "https://raw.githubusercontent.com/kubernetes/cloud-provider-vsphere/v1.20.0/manifests/controller-manager/cloud-controller-manager-role-bindings.yaml",
+                    "https://raw.githubusercontent.com/kubernetes/cloud-provider-vsphere/v1.20.0/manifests/controller-manager/vsphere-cloud-controller-manager-ds.yaml"]
+                    }
+        }
+             
+}
