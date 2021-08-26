@@ -1,6 +1,6 @@
 {
     "CSI" : {
-            "v2.2.1" : {
+            "2.2.1" : {
                     "vSphere" : { "min" : "6.7", "max": "7.0"},
                     "k8s" : {"min": "1.18", "max": "1.21"},
                     "isCPIRequired" : false,
@@ -12,7 +12,7 @@
                     }
         },
     "CPI" : {
-            "v1.20.0" : {
+            "1.20.0" : {
                     "vSphere" : { "min" : "6.7", "max": "7.0"},
                     "k8s" : {"skewVersion": "1.21"},
                     "deploymentPath": [
