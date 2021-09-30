@@ -1,1 +1,9 @@
 
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: compat-matrix-config
+  namespace: default
+data:
+  versionConfigURL: "https://raw.githubusercontent.com/asifdxtreme/Docs/master/compat/upgrade-matrix.yaml"
+  auto-upgrade: "disabled"
