@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap1
+metadata:
+  name: compat-matrix-config
+  namespace: default
+data:
+  versionConfigURL: "NEW"
+  auto-upgrade: "disabled"
