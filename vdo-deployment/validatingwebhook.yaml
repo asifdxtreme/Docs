@@ -1,0 +1,162 @@
+# Requires k8s 1.19+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vsphere-webhook-svc
+  namespace: vmware-system-csi
+  labels:
+    app: vsphere-csi-webhook
+spec:
+  ports:
+    - port: 443
+      targetPort: 8443
+  selector:
+    app: vsphere-csi-webhook
+---
+apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  name: validation.csi.vsphere.vmware.com
+webhooks:
+  - name: validation.csi.vsphere.vmware.com
+    clientConfig:
+      service:
+        name: vsphere-webhook-svc
+        namespace: vmware-system-csi
+        path: "/validate"
+      caBundle: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM2RENDQWRBQ0NRQ1lPQmJyd0NabU96QU5CZ2txaGtpRzl3MEJBUXNGQURBMk1UUXdNZ1lEVlFRRERDdDIKVTNCb1pYSmxJRU5UU1NCQlpHMXBjM05wYjI0Z1EyOXVkSEp2Ykd4bGNpQlhaV0pvYjI5cklFTkJNQjRYRFRJegpNRFF5TlRFeE1UVXhObG9YRFRJek1EVXlOVEV4TVRVeE5sb3dOakUwTURJR0ExVUVBd3dyZGxOd2FHVnlaU0JEClUwa2dRV1J0YVhOemFXOXVJRU52Ym5SeWIyeHNaWElnVjJWaWFHOXZheUJEUVRDQ0FTSXdEUVlKS29aSWh2Y04KQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQUx6eTdKNXYyN1FXY056NW1jY2lwK2x1dHZvMmMrQ2hTQU43ZTdGNwpHWXY3bDRxVHA3SWsvMllyMTY0UFhLV1RzKy8rVllqMitpK1hQU3VUeFBXOXhQYVJOODJrZlQzTTlWbkwrbWRpCkpjOG94UzN6bVRyN2xkenRFSTBhOE43N1NjRE0zMmdST2J5by94TDRLQUhmVWpUVGZNeE1Pb3VURmFMMzdpMzQKdTQzQVB4NWVKWEpGTWh6b3lGMzE1RHV2dGhiRjRhaWxLK0p2N0dGUkVSY1kzaEVSU1lDS1pwaUEzY0tZZXRLSgp5YlcvQjBVckxRMWpEL3pwbDh6T1llelMyYXZrZU9keCtDQm5KdnFuRHZlS3hvNEJxWE0yOEsrd3RnMTNMNlp6CldqNVliUFdmWUFQSEhYVENUMHZHSEk4dklIWVZ1WDlucDVkUUU3aXBsRHUzZ0RzQ0F3RUFBVEFOQmdrcWhraUcKOXcwQkFRc0ZBQU9DQVFFQWhPTjRpL1Zmb1dLTXpQTG4vcmdQQ3hiYjJYTS9KRFBWZHpkVHRBNWk4R0EySHAxZApJdFdRWStoRlhIQ1NrMlhLMnQ1OVFjbUNURURUQUlBMEptT3JNU2lBL0ZQZnFCSENrN25ZNkVGTVV5UDg5ZkNRCjVBay9aZnhDckRjcVJiejVLNUZMNFRkOWZuQXZETjBtb3VLNnB0M1BXV005ekxKdlJkSmU0RmRFMW0rY285cXoKeU9qVi94TG9VT1dLOUUzSWJvZFJHSjF4WEFnc2c0aVlzeDJXUkdZK3duQ2hnKzZ2akdveG5yWDUvTXdIZnZHRAozbDJDbHRnUjVNblFESHdZQlJpUGdRVXB6amV5RTFkYW1NV0o1MVAxb0FERXBZNGJpUUt5bks3bnRKcXhEWE5tCnF5dUNhN09PSmNMMDluMTgwTTFoMkRJOXFFZHVqZm5ldG9VZzZBPT0KLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo="
+​
+    rules:
+      - apiGroups:   ["storage.k8s.io"]
+        apiVersions: ["v1", "v1beta1"]
+        operations:  ["CREATE", "UPDATE"]
+        resources:   ["storageclasses"]
+      - apiGroups:   [""]
+        apiVersions: ["v1", "v1beta1"]
+        operations:  ["UPDATE", "DELETE"]
+        resources:   ["persistentvolumeclaims"]
+        scope: "Namespaced"
+    sideEffects: None
+    admissionReviewVersions: ["v1"]
+    failurePolicy: Fail
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: vsphere-csi-webhook
+  namespace: vmware-system-csi
+---
+kind: ClusterRole
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: vsphere-csi-webhook-cluster-role
+rules:
+  - apiGroups: ["snapshot.storage.k8s.io"]
+    resources: ["volumesnapshots"]
+    verbs: ["get", "list"]
+  - apiGroups: [""]
+    resources: ["persistentvolumes"]
+    verbs: ["get"]
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: vsphere-csi-webhook-cluster-role-binding
+subjects:
+  - kind: ServiceAccount
+    name: vsphere-csi-webhook
+    namespace: vmware-system-csi
+roleRef:
+  kind: ClusterRole
+  name: vsphere-csi-webhook-cluster-role
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: vsphere-csi-webhook-role
+  namespace: vmware-system-csi
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps"]
+    verbs: ["get", "list", "watch"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: vsphere-csi-webhook-role-binding
+  namespace: vmware-system-csi
+subjects:
+  - kind: ServiceAccount
+    name: vsphere-csi-webhook
+    namespace: vmware-system-csi
+roleRef:
+  kind: Role
+  name: vsphere-csi-webhook-role
+  apiGroup: rbac.authorization.k8s.io
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: vsphere-csi-webhook
+  namespace: vmware-system-csi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vsphere-csi-webhook
+  template:
+    metadata:
+      labels:
+        app: vsphere-csi-webhook
+        role: vsphere-csi-webhook
+    spec:
+      serviceAccountName: vsphere-csi-webhook
+      nodeSelector:
+        node-role.kubernetes.io/control-plane: ""
+      tolerations:
+        - key: node-role.kubernetes.io/master
+          operator: Exists
+          effect: NoSchedule
+        - key: node-role.kubernetes.io/control-plane
+          operator: Exists
+          effect: NoSchedule
+        # uncomment below toleration if you need an aggressive pod eviction in case when
+        # node becomes not-ready or unreachable. Default is 300 seconds if not specified.
+        #- key: node.kubernetes.io/not-ready
+        #  operator: Exists
+        #  effect: NoExecute
+        #  tolerationSeconds: 30
+        #- key: node.kubernetes.io/unreachable
+        #  operator: Exists
+        #  effect: NoExecute
+        #  tolerationSeconds: 30
+      dnsPolicy: "Default"
+      containers:
+        - name: vsphere-webhook
+          image: gcr.io/cloud-provider-vsphere/csi/release/syncer:v2.7.0
+          args:
+            - "--operation-mode=WEBHOOK_SERVER"
+            - "--fss-name=internal-feature-states.csi.vsphere.vmware.com"
+            - "--fss-namespace=$(CSI_NAMESPACE)"
+          imagePullPolicy: "Always"
+          env:
+            - name: WEBHOOK_CONFIG_PATH
+              value: "/run/secrets/tls/webhook.config"
+            - name: LOGGER_LEVEL
+              value: "PRODUCTION" # Options: DEVELOPMENT, PRODUCTION
+            - name: CSI_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+          volumeMounts:
+            - mountPath: /run/secrets/tls
+              name: webhook-certs
+              readOnly: true
+      volumes:
+        - name: socket-dir
+          emptyDir: {}
+        - name: webhook-certs
+          secret:
+            secretName: vsphere-webhook-certs
